@@ -2,7 +2,7 @@ resource "azurerm_cdn_profile" "cdn" {
   name                = var.cdn_name
   location            = var.location
   resource_group_name = var.resource_group_name
-  sku                 = "Standard_Verizon"
+  sku                 = var.sku
 }
 
 resource "azurerm_cdn_endpoint" "cdn_endpoint" {
@@ -12,7 +12,7 @@ resource "azurerm_cdn_endpoint" "cdn_endpoint" {
   resource_group_name = var.resource_group_name
 
   origin {
-    name      = "bootlabstech"
-    host_name = "www.bootlabstech.com"
+    name      = var.cdn_endpoint_origin_name
+    host_name = var.host_name
   }
 }
